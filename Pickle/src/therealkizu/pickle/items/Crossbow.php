@@ -29,15 +29,15 @@ class Crossbow extends Tool {
 		parent::__construct(self::CROSSBOW, $meta, "Crossbow");
 	}
 	
-	public function getFuelTime() : int{
+	public function getFuelTime(): int {
 		return 200;
 	}
 
-	public function getMaxDurability() : int{
+	public function getMaxDurability(): int {
 		return 385;
 	}
 	
-	public function onClickAir(Player $player, Vector3 $directionVector) : bool{
+	public function onClickAir(Player $player, Vector3 $directionVector): bool {
 		if ($this->isFullyLoaded()){
 			$this->fireCrossbow($player);
 			$player->getInventory()->setItemInHand($this);
@@ -48,7 +48,7 @@ class Crossbow extends Tool {
 			return true;
 		}
 
-		if ($player->getGamemode() === 0 and !$player->getInventory()->contains(ItemFactory::get(Item::ARROW, 0, 2))){
+		if ($player->getGamemode() === 0 and $player->getGamemode() === 0 and !$player->getInventory()->contains(ItemFactory::get(Item::ARROW, 0, 1))){
 			$player->getInventory()->sendContents($player);
 			return false;
 		}
@@ -67,12 +67,13 @@ class Crossbow extends Tool {
 		return true;
 	} 
 	
-	private function isFullyLoaded() {
+    private function isFullyLoaded() {
         $tag = $this->getNamedTagEntry("loadedCrossbow");
         if ($tag == null){
             return false;
         }
-        if ($tag->getInt("loadedCrossbowTime") > time()){
+
+        if ($tag->getValue() > time()){
             return false;
         }
         return true;
@@ -118,7 +119,7 @@ class Crossbow extends Tool {
 		}
 	}
 
-	private function setFullyLoaded(Player $player, bool $value){
+	private function setFullyLoaded(Player $player, bool $value) {
 		if (!$value){
 			$this->removeNamedTagEntry("loadedCrossbow");
 			return;
@@ -136,7 +137,7 @@ class Crossbow extends Tool {
 		$this->setNamedTagEntry($tag);
 	}
 	
-	public function isLoaded(){
+	public function isLoaded() {
 		$tag = $this->getNamedTagEntry("loadedCrossbow");
 		if($tag == null){
 			return false;

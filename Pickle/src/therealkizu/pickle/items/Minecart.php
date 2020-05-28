@@ -24,12 +24,11 @@ class Minecart extends Item {
 		parent::__construct(Item::MINECART, $meta, "Minecart");
 	}
 	
-	public function getMaxStackSize() : int{
-		return 64;
+	public function getMaxStackSize(): int {
+		return 1;
 	}
-	
-    // Work in progress...
-    public function onActivate(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector): bool{
+
+    public function onActivate(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector): bool {
         if ($blockClicked->getId() !== Block::RAIL){
             return false;
         }

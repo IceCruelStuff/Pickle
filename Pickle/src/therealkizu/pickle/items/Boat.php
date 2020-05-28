@@ -24,15 +24,15 @@ class Boat extends Item {
 		parent::__construct(self::BOAT, 0, "Boat");
 	}
 
-	public function getFuelTime() : int{
+	public function getFuelTime(): int {
 		return 400; 
 	}
 
-	public function getMaxStackSize() : int{
-		return 64;
+	public function getMaxStackSize(): int {
+		return 1;
 	}
-  // Work in progress...
-	public function onActivate(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : bool {
+
+	public function onActivate(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector): bool {
 		$nbt = Entity::createBaseNBT($blockReplace->add(0.5, 0, 0.5));
 		$nbt->setInt("Variant", $this->getDamage());
 		$entity = Entity::createEntity("Boat", $player->level, $nbt);
@@ -41,4 +41,5 @@ class Boat extends Item {
 
 		return true;
 	}
+
 }
