@@ -29,15 +29,15 @@ class Crossbow extends Tool {
 		parent::__construct(self::CROSSBOW, $meta, "Crossbow");
 	}
 	
-	public function getFuelTime() : int{
+	public function getFuelTime(): int {
 		return 200;
 	}
 
-	public function getMaxDurability() : int{
+	public function getMaxDurability(): int {
 		return 385;
 	}
 	
-	public function onClickAir(Player $player, Vector3 $directionVector) : bool{
+	public function onClickAir(Player $player, Vector3 $directionVector): bool {
 		if ($this->isFullyLoaded()){
 			$this->fireCrossbow($player);
 			$player->getInventory()->setItemInHand($this);
@@ -119,7 +119,7 @@ class Crossbow extends Tool {
 		}
 	}
 
-	private function setFullyLoaded(Player $player, bool $value){
+	private function setFullyLoaded(Player $player, bool $value) {
 		if (!$value){
 			$this->removeNamedTagEntry("loadedCrossbow");
 			return;
@@ -137,7 +137,7 @@ class Crossbow extends Tool {
 		$this->setNamedTagEntry($tag);
 	}
 	
-	public function isLoaded(){
+	public function isLoaded() {
 		$tag = $this->getNamedTagEntry("loadedCrossbow");
 		if($tag == null){
 			return false;

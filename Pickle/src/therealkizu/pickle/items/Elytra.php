@@ -20,7 +20,7 @@ class Elytra extends Item {
 		parent::__construct(self::ELYTRA, 0, "ElytraWings");
 	}
 
-	public function getMaxStackSize() : int{
+	public function getMaxStackSize(): int {
 		return 1;
 	}
 
