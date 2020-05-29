@@ -8,3 +8,13 @@ api:
 author: TheRealKizu
 description: A PMMP plugin that aims to enhance vanilla PocketMine-MP!
 website: https://github.com/TheRealKizu/Pickle
+
+# Permissions
+permissions:
+  pickle.cmd:
+    description: Permission for all Pickle Commands
+    default: op
+    children:
+      pickle.cmd.soccer:
+        description: Permission for /soccer
+        default: op

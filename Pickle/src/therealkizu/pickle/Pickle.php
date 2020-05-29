@@ -12,12 +12,17 @@ declare(strict_types=1);
 
 namespace therealkizu\pickle;
 
+use pocketmine\entity\Entity;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use therealkizu\pickle\commands\SoccerCommand;
+use therealkizu\pickle\entities\SoccerBall;
 use therealkizu\pickle\items\ItemManager;
 use therealkizu\pickle\utils\Utils;
 
 class Pickle extends PluginBase {
+
+    public const PICKLE_PREFIX = "§l§aPIC§bKLE §r§6| ";
 
     /** @var Config $config */
     public $config;
@@ -47,7 +52,29 @@ class Pickle extends PluginBase {
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $this->utils = new Utils($this);
 
+        $this->registerCommands();
+        $this->registerEntities();
         $this->registerManagers();
+    }
+
+    /**
+     * This registers every custom command on the plugin
+     *
+     * @return void
+     */
+    public function registerCommands(): void {
+        $this->getServer()->getCommandMap()->registerAll("Pickle", [
+           new SoccerCommand($this, "soccer", "Summon a soccer ball!")
+        ]);
+    }
+
+    /**
+     * This registers every custom entity on the plugin
+     *
+     * @return void
+     */
+    public function registerEntities(): void {
+        Entity::registerEntity(SoccerBall::class, true);
     }
 
     /**

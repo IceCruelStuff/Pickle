@@ -14,3 +14,7 @@ language-selected: "Language Selected: en_US (English)"
 
 # Command Messages
 no-permission: "&cYou don't have permission to use this command!"
+execute-ingame: "&cThis command can only be use in-game!"
+
+# Soccer Command
+spawned-soccerball: "&aYou successfully spawned a &esoccer ball &ain your coordinates!"
