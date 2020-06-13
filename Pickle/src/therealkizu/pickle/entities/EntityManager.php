@@ -24,7 +24,7 @@ class EntityManager {
         self::$entities = $this;
     }
 
-    public static function getEntities() {
+    public static function getEntities(): self {
         return self::$entities;
     }
 
@@ -35,7 +35,7 @@ class EntityManager {
      */
     public function spawnSoccerBall(Player $player): void {
         $level = $player->getLevel();
-        $ballNBT = Entity::createBaseNBT($player, null, 2, 2);
+        $ballNBT = Entity::createBaseNBT($player, null, $player->getYaw(), $player->getPitch());
         $soccerBall = new SoccerBall($level, $ballNBT);
         $soccerBall->setScale(1.3);
         $soccerBall->spawnToAll();

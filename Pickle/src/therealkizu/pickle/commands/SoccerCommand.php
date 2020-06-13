@@ -12,11 +12,11 @@ declare(strict_types=1);
 
 namespace therealkizu\pickle\commands;
 
+use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
-use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use therealkizu\pickle\entities\EntityManager;
 use therealkizu\pickle\Pickle;
@@ -59,4 +59,5 @@ class SoccerCommand extends Command implements PluginIdentifiableCommand {
     public function getPlugin(): Plugin {
         return $this->pickle;
     }
+
 }

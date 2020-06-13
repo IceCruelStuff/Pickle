@@ -12,11 +12,11 @@ declare(strict_types=1);
 
 namespace therealkizu\pickle\entities;
 
-use pocketmine\entity\Creature;
+use pocketmine\entity\Living;
 
-class SoccerBall extends Creature {
+class SoccerBall extends Living {
 
-    const NETWORK_ID = 42;
+    public const NETWORK_ID = 42;
 
     /** @var float $height */
     public $height = 1.01;
